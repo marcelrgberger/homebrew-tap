@@ -2,7 +2,7 @@ class OpenaiCli < Formula
   desc "AI-powered document analysis with 85+ expert consultation roles"
   homepage "https://github.com/marcelrgberger/openai-cli"
   url "https://github.com/marcelrgberger/openai-cli/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "e654f1cf83db68399764b90dabacd598895f15f7ef94a6a988fa6f66f3f691f3"
+  sha256 "33385b6137ff9a35f909fb4afb57b2be2b636069f6c1894ef866179e981e3633"
   license "MIT"
 
   depends_on "node@22"
@@ -16,7 +16,7 @@ class OpenaiCli < Formula
 
     (bin/"openai-cli").write <<~SH
       #!/bin/bash
-      exec "#{Formula["node@22"].opt_bin}/node" "#{libexec}/dist/bin/openai-cli.js" "$@"
+      exec "#{Formula["node@22"].opt_bin}/node" "#{libexec}/dist/openai-cli.js" "\$@"
     SH
   end
 
