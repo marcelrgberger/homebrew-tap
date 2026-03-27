@@ -1,8 +1,8 @@
 class OpenaiCli < Formula
   desc "AI-powered document analysis with 85+ expert consultation roles"
   homepage "https://github.com/marcelrgberger/openai-cli"
-  url "https://github.com/marcelrgberger/openai-cli/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "9cd4ede6996aaa47c62cc4a5b4931df8faf0b8bc9e5f787b326607efa626cead"
+  url "https://github.com/marcelrgberger/openai-cli/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "e654f1cf83db68399764b90dabacd598895f15f7ef94a6a988fa6f66f3f691f3"
   license "MIT"
 
   depends_on "node@22"
@@ -11,11 +11,9 @@ class OpenaiCli < Formula
     system "npm", "install"
     system "npm", "run", "build"
 
-    # Install the built dist + roles + node_modules into libexec
     libexec.install "dist", "node_modules", "package.json"
-    libexec.install "src/roles" => "roles"
+    (libexec/"roles").install Dir["src/roles/**/*.md"]
 
-    # Create wrapper script in bin
     (bin/"openai-cli").write <<~SH
       #!/bin/bash
       exec "#{Formula["node@22"].opt_bin}/node" "#{libexec}/dist/bin/openai-cli.js" "$@"
@@ -24,14 +22,12 @@ class OpenaiCli < Formula
 
   def caveats
     <<~EOS
-      Start openai-cli with:
+      Start openai-cli:
         openai-cli
 
-      On first launch, you'll be guided through setup:
-      - Enter your OpenAI API key
-      - Choose your preferred model
-
-      No manual configuration needed!
+      On first launch, the onboarding will guide you through:
+        1. Entering your OpenAI API key
+        2. Choosing your preferred model
 
       Documentation: https://github.com/marcelrgberger/openai-cli
     EOS
