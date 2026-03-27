@@ -2,7 +2,7 @@ class OpenaiCli < Formula
   desc "AI-powered document analysis with 85+ expert consultation roles"
   homepage "https://github.com/marcelrgberger/openai-cli"
   url "https://github.com/marcelrgberger/openai-cli/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "33385b6137ff9a35f909fb4afb57b2be2b636069f6c1894ef866179e981e3633"
+  sha256 "e551f6bb948190a29c3297e5c8f06a5b443838411b7438c77c89014056832405"
   license "MIT"
 
   depends_on "node@22"
