@@ -8,17 +8,30 @@ class OpenaiCli < Formula
   depends_on "node@22"
 
   def install
-    system "npm", "install", *std_npm_args
-    bin.install_symlink Dir["#{libexec}/bin/*"]
+    system "npm", "install"
+    system "npm", "run", "build"
+
+    # Install the built dist + roles + node_modules into libexec
+    libexec.install "dist", "node_modules", "package.json"
+    libexec.install "src/roles" => "roles"
+
+    # Create wrapper script in bin
+    (bin/"openai-cli").write <<~SH
+      #!/bin/bash
+      exec "#{Formula["node@22"].opt_bin}/node" "#{libexec}/dist/bin/openai-cli.js" "$@"
+    SH
   end
 
   def caveats
     <<~EOS
-      To use openai-cli, you need an OpenAI API key:
-        export OPENAI_API_KEY="sk-..."
-
-      Then start with:
+      Start openai-cli with:
         openai-cli
+
+      On first launch, you'll be guided through setup:
+      - Enter your OpenAI API key
+      - Choose your preferred model
+
+      No manual configuration needed!
 
       Documentation: https://github.com/marcelrgberger/openai-cli
     EOS
