@@ -10,6 +10,8 @@ brew tap marcelrgberger/tap
 
 ## Available
 
+> **Cask** = pre-built macOS app installed to `/Applications`. **Formula** = CLI tool built from source.
+
 | App | Type | Install | Description |
 |-----|------|---------|-------------|
 | [AutoBrew](https://github.com/marcelrgberger/auto-brew) | Cask | `brew install --cask autobrew` | Automatically keeps Homebrew packages up to date |
