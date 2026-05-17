@@ -1,10 +1,10 @@
 cask "autobrew" do
-  version "1.0.3"
-  sha256 "d51d22d97dd016d86f706dd979894946a0d2af433d7da76f66080fd0faa3a7cc"
+  version "2.0.0"
+  sha256 "1007657572ca3f39735686b6de105b5c6bf6ae24ab0d4abf8371190974ceabaf"
 
   url "https://github.com/marcelrgberger/auto-brew/releases/download/v#{version}/AutoBrew.dmg"
   name "AutoBrew"
-  desc "Automatically keeps Homebrew and all installed packages up to date"
+  desc "Auto-update Homebrew + GUI store, snapshots, and cross-Mac restore"
   homepage "https://github.com/marcelrgberger/auto-brew"
 
   livecheck do
@@ -12,10 +12,13 @@ cask "autobrew" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :tahoe"
+
   app "AutoBrew.app"
 
   zap trash: [
     "~/Library/Preferences/za.co.digitalfreedom.AutoBrew.plist",
+    "~/Library/Application Support/AutoBrew",
   ]
 end
 
