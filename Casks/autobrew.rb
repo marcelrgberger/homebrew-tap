@@ -15,6 +15,7 @@ cask "autobrew" do
   depends_on macos: :sonoma
 
   app "AutoBrew.app"
+  binary "#{appdir}/AutoBrew.app/Contents/Helpers/autobrew"
 
   zap trash: [
     "~/Library/Application Support/AutoBrew",
