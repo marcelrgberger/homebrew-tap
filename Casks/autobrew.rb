@@ -1,6 +1,6 @@
 cask "autobrew" do
-  version "2.1.0"
-  sha256 "75c2daa5214ec7f0117d13ff85e456fcb02b6b937ececb0020315dfb14fee78d"
+  version "2.3.0"
+  sha256 "db885bc65da52772823b1e78be4ef5ca3d041937d2f71d086f0eb4feccab0c83"
 
   url "https://github.com/marcelrgberger/auto-brew/releases/download/v#{version}/AutoBrew.dmg"
   name "AutoBrew"
@@ -12,13 +12,12 @@ cask "autobrew" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :tahoe"
+  depends_on macos: :sonoma
 
   app "AutoBrew.app"
 
   zap trash: [
-    "~/Library/Preferences/za.co.digitalfreedom.AutoBrew.plist",
     "~/Library/Application Support/AutoBrew",
+    "~/Library/Preferences/za.co.digitalfreedom.AutoBrew.plist",
   ]
 end
-
