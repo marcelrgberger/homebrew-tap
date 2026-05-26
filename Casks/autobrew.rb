@@ -17,6 +17,11 @@ cask "autobrew" do
   app "AutoBrew.app"
   binary "#{appdir}/AutoBrew.app/Contents/Helpers/autobrew"
 
+  # Explicit symlink path so brew can clean up on upgrade/reinstall even
+  # when the source app has already been moved to the Caskroom backup
+  # (otherwise brew fails with "symlink source ... is not there").
+  uninstall delete: "#{HOMEBREW_PREFIX}/bin/autobrew"
+
   zap trash: [
     "~/Library/Application Support/AutoBrew",
     "~/Library/Preferences/za.co.digitalfreedom.AutoBrew.plist",
