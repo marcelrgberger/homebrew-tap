@@ -1,6 +1,6 @@
 cask "autobrew" do
-  version "2.5.1"
-  sha256 "0f2b71ef45f78d7158aff30fac08cf05f244fe08fe5f6f8e924d42da48917f76"
+  version "2.5.2"
+  sha256 "58dd0b7ab5d1fa2e48ddbf9b13208608baa0af7cc25754c74d425501e668e35d"
 
   url "https://github.com/marcelrgberger/auto-brew/releases/download/v#{version}/AutoBrew.dmg"
   name "AutoBrew"
